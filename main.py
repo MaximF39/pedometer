@@ -7,8 +7,8 @@ from fastapi import FastAPI
 from fastapi.responses import ORJSONResponse
 from starlette_prometheus import PrometheusMiddleware, metrics
 
-from core.settings import settings
-from pedometer import api
+from src.core.settings import settings
+from src.pedometer import api
 
 logger = logging.getLogger(__name__)
 
@@ -41,7 +41,7 @@ app = FastAPI(
 
 app.add_middleware(PrometheusMiddleware)
 
-app.include_router(api.router)
+app.include_router(api.router_v1)
 app.add_route(settings.metrics_endpoint, metrics)
 
 if __name__ == "__main__":  # pragma: no cover

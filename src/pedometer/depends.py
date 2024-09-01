@@ -1,4 +1,4 @@
-from pedometer.repository import Repository
+from src.pedometer.repository import Repository
 
 
 def get_repository():

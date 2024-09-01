@@ -1,4 +1,4 @@
-FROM python:3.11-alpine
+FROM python:3.12-alpine
 
 WORKDIR /service
 
@@ -12,10 +12,11 @@ COPY req.txt req.txt
 RUN python -m pip install --upgrade pip
 RUN pip install -r req.txt
 
-COPY alembic.ini alembic ./
-
+COPY alembic.ini .
+COPY alembic alembic
 COPY src src
+COPY main.py main.py
+# alembic upgrade head
+CMD ["alembic", "upgrade", "head"]
 
-RUN ["alembic", "upgrade", "head"]
-
-ENTRYPOINT ["python", "src/main.py"]
+ENTRYPOINT ["python", "main.py"]

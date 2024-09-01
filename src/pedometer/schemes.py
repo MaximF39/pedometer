@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 
-from core.schemes import UserScheme
+from src.core.schemes import UserScheme
 
 
 class TopScheme(BaseModel):
